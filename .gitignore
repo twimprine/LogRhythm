@@ -1,3 +1,6 @@
+# Chef kitchen files
+.kitchen/
+
 *.gem
 *.rbc
 /.config
