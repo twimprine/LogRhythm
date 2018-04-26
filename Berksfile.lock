@@ -1,0 +1,7 @@
+DEPENDENCIES
+  LogRhythm
+    path: .
+    metadata: true
+
+GRAPH
+  LogRhythm (0.1.2)
