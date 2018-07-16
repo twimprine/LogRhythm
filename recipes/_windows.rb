@@ -34,14 +34,14 @@ case node['kernel']['machine']
 when 'i386'
     remote_file 'C:/temp/LRSystemMonitor.exe' do
       action :create
-      source 'http://10.80.24.10:9000/software/logrhythm/LRSystemMonitor_7.2.6.8002.exe?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=access%2F20171206%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20171206T003113Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=a2a02fba7b56a50722341813b80f4756dfdfee9599b8dfb83935611f83579cb7'
+      source 'https://s3.amazonaws.com/docs.xula.local/LogRythm/LRSystemMonitor_7.3.2.8000.exe'
       #source '\\\\xulanas01.xula.local\\VMwareRepository\\_Software\\LogRhythm\\LRSystemMonitor_7.2.6.8002.exe'
       show_progress true
     end
 else
     remote_file 'C:/temp/LRSystemMonitor.exe' do
       action :create
-      source 'http://10.80.24.10:9000/software/logrhythm/LRSystemMonitor_64_7.2.6.8002.exe?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=access%2F20171206%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20171206T002310Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=df4e0ae6d63532108f486592c2777ee74cd2e35b901ef3a9c20fa1e63b4672fb'
+      source 'https://s3.amazonaws.com/docs.xula.local/LogRythm/LRSystemMonitor_64_7.3.2.8000.exe'
       #source '\\\\xulanas01.xula.local\\VMwareRepository\\_Software\\LogRhythm\\LRSystemMonitor_64_7.2.6.8002.exe'
       show_progress true
     end
@@ -64,3 +64,8 @@ end
 service 'scsm' do
     subscribes :restart, 'template[C:\\Program Files\\LogRhythm\\LogRhythm System Monitor\\config\\scsm.ini]', :immediately
 end    
+
+windows_service 'scsm' do
+  action :start
+  action :enables
+end

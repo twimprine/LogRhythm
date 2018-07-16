@@ -32,7 +32,7 @@
 case node['platform_family']
   when 'windows'
     include_recipe 'LogRhythm::_windows'
-  when 'redhat', 'centos', 'fedora'
+  when 'redhat', 'centos', 'fedora', 'rhel'
     include_recipe 'LogRhythm::_rhel'
   when 'ubuntu'
     include_recipe 'LogRhythm::_ubuntu'
